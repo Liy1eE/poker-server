@@ -26,7 +26,8 @@ local so_folder = jit.os
 if jit.os == "Windows" then
     so_folder = so_folder .. jit.arch
 end
-package.cpath = package.cpath .. ";./libc/" .. so_folder .."/?.so"
+
+package.cpath = package.cpath .. ";./libc/" .. so_folder .."/?.dll"
 package.path = package.path .. ";./lib/?.lua;./lib/net/?.lua;./src/?.lua;./lib/lobby/?.lua;./lib/lobby/lib/?.lua;./lib/simple/?.lua"
 
 require "ext"
