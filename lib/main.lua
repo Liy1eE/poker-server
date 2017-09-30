@@ -60,7 +60,8 @@ local function msg_handle(agent, pt, ...)
 		LERR("unknow pack, type: 0x%08x, sid: 0x%08x", pt, agent.sid or 0)
 		return
 	end
-	LTRACE("recv msg, pid: %d, type: 0x%08x, %s", agent.id or 0, pt, table.dump{...})
+
+	LTRACE("【↓】%s,[%d],%s", MSG_NAME[pt], agent.id or 0, table.dump{...})
 	
     if pt > 0x0010 and agent.id == nil then
         LERR("invalid pack, type: 0x%08x, sid: 0x%08x", pt, agent.sid or 0)

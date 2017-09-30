@@ -1,6 +1,6 @@
 local log = require "log"
 local LERR = log.error
-
+MSG_NAME = {}
 do
     local msg = require "msg"
 	local val_tbl = {}
@@ -15,4 +15,9 @@ do
             LERR("!!! duplicate key in game_msg, k: %s, v: 0x%08x => cur: 0x%08x", k, v, msg[k])
         end
     end
+
+    for k, v in pairs(msg) do
+        MSG_NAME[v] = k
+    end
 end
+

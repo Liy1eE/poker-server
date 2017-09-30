@@ -39,7 +39,7 @@ local function init_player(pid)
 	player_data.sex = 1
 	
 	player_data.send = function(self, pt, ...)
-		LTRACE("send msg: 0x%08x, pid: %d, msg: %s,", pt, self.id, table.dump({...}))
+		LTRACE("【↑】%s,[%d],%s", MSG_NAME[pt], self.id, table.dump({...}))
 		self.client:send(pt, ...)
 	end
 	player_data.recv = function() end
@@ -59,7 +59,7 @@ local function load_player(pid)
 	return player
 end
 
-local g_pid = 35450
+local g_pid = 1
 MSG_REG[msg.LOGIN] = function(client, pid)
 	if client.agent ~= client then
 		LERR("repeat login, account pid : %s", client.agent.id)
@@ -71,7 +71,7 @@ MSG_REG[msg.LOGIN] = function(client, pid)
 		g_pid = g_pid + 1
         LLOG("create account success, pid: %s", pid)
     end
-    
+
     local player = load_player(pid)
 	if player.client then
 		player.client:close()

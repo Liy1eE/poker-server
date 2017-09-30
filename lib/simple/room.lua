@@ -225,7 +225,7 @@ MSG_REG[msg.CREATE] = function(player, _, money_type, num, ...)
     while room_tbl[room_gid] do
         room_gid = math.random(100000, ROOM_MAX_ID)
     end
-
+    room_gid = 666666
     room_tbl[room_gid] = room
 
     room.id = room_gid
