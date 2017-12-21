@@ -69,7 +69,7 @@ MSG_REG[msg.LOGIN] = function(client, pid, ...)
 		g_pid = g_pid + 1
         LLOG("create account success, pid: %s", pid)
     end
-
+    
     local player = load_player(pid)
 	if player.client then
 		player.client:close()
