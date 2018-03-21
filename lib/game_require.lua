@@ -1,7 +1,8 @@
 local require_api = {
     "log", 
     "timer",
-    "msg"
+    "msg",
+    "zphu"
 }
 
 --allow from ext.lua
@@ -16,19 +17,20 @@ table.is_same_day
 table.merge
 table.dump
 string.split
+_G.check_hu
 ]]
 
 local sandbox = require "sandbox"
+
+local open_require = {}
+for _, k in ipairs(require_api) do
+    open_require[k] = sandbox.read_only(require(k), k)
+end
 
 ext_api:gsub('%S+', function(id)
     local module, method = id:match('([^%.]+)%.([^%.]+)')
     sandbox.set_env_method(module, method, _G[module][method])
 end)
-
-local open_require = {}
-for _, k in ipairs(require_api) do
-    open_require[k] =  sandbox.read_only(require(k), k)
-end
 
 local game_path, game_loaded
 local function game_require(name)
