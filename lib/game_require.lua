@@ -1,8 +1,7 @@
 local require_api = {
-    "log", 
+    "log",
     "timer",
-    "msg",
-    "zphu"
+    "msg"
 }
 
 --allow from ext.lua
@@ -38,12 +37,12 @@ local function game_require(name)
     if mod then
         return mod
     end
-    
+
     mod = game_loaded[name]
     if mod then
         return mod
     end
-    
+
     local path = game_path .. "/" .. name .. ".lua"
     local f = loadfile(path)
     assert(f, "module '" .. path .. "' not found")
@@ -56,7 +55,7 @@ sandbox.set_env("MSG_REG", setmetatable({}, {
     __index = MSG_REG,
     __newindex = function(_, pt, v)
         if MSG_REG[pt] ~= nil then
-            error(string.format("duplicate MSG_REG, pt: 0x%08x", pt), 2) 
+            error(string.format("duplicate MSG_REG, pt: 0x%08x", pt), 2)
         end
         MSG_REG[pt] = v
     end

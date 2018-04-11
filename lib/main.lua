@@ -29,3 +29,4 @@ package.path = "./" .. game_name .. "/?.lua;" .. package.path
 require "check_game"
 require "room"(game_name, "src_mj")
 start(port)
+

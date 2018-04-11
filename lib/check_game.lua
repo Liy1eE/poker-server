@@ -20,4 +20,3 @@ do
         MSG_NAME[v] = k
     end
 end
-
