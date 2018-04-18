@@ -17,7 +17,7 @@ if jit.os == "Windows" then
 end
 
 package.cpath = package.cpath .. ";./libc/" .. so_folder .. so_type
-package.path = package.path .. ";./lib/?.lua;./lib/net/?.lua;./lib/lobby/?.lua;./lib/lobby/lib/?.lua;./lib/simple/?.lua;"
+package.path = package.path .. ";./lib/?.lua;./lib/net/?.lua;./src/?.lua;./lib/lobby/?.lua;./lib/lobby/lib/?.lua;./lib/simple/?.lua;"
 
 math.randomseed(os.time())
 
